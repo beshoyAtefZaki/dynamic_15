@@ -129,7 +129,11 @@ app_license = "mit"
 #		"on_trash": "method"
 #	}
 # }
-
+doc_events = {
+    "Item" : {
+        "validate" :"dynamic_15.item_barcode.item_barcode.create_item_barcode"
+    }
+}
 # Scheduled Tasks
 # ---------------
 
