@@ -17,10 +17,10 @@ def get_barcode(digist =False ) :
     return random_str
 @frappe.whitelist()
 def create_item_barcode(doc ,*args , **kwargs) :
-    
+    barcode = get_barcode()
     if not doc.barcodes :
         row = doc.append("barcodes")
-        row.barcode = get_barcode()
+        row.barcode = barcode
         row.uom = doc.stock_uom
-    if not doc.custom_barcode :
-     doc.custom_barcode = get_barcode()
+    if not doc.custom_barcode or len(doc.custom_barcode) < 3 :
+       doc.custom_barcode = barcode
